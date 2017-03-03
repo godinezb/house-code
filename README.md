@@ -1,24 +1,19 @@
-# README
+## Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. bundle
+2. rails db:setup
+3. rails db:migrate
+4. rails db:seed
 
-Things you may want to cover:
+**Tests**
+Realice pruebas para las validaciones de los datos, para correr dichas pruebas usar el comando:
+1. rspec -f d
 
-* Ruby version
+## Notas
 
-* System dependencies
+* Si bien el formato de los endpoints no incluía ningún namespace decidí versionar
+la api para seguir buenas prácticas de código. Por lo que todos los enpoints llevan
+el prefijo v1, por ejemplo para GET de todas las propiedades se usa: /v1/properties/ y así
+en cada petición.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* La dirección para ver el ejemplo en heroku es [armandogbr-house-code.herokuapp.com]: https://armandogbr-house-code.herokuapp.com/
