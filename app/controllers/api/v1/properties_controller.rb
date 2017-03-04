@@ -1,11 +1,12 @@
-class PropertiesController < ApplicationController
+class Api::V1::PropertiesController < ApplicationController
+  include ErrorSerializer
   before_action :set_property, only: [:show, :update, :destroy]
 
   # GET /properties
   def index
     @properties = Property.all
 
-    render json: @properties
+    render json: @properties, root: "properties:", adapter: :json, status: 200
   end
 
   # GET /properties/1
@@ -18,24 +19,26 @@ class PropertiesController < ApplicationController
     @property = Property.new(property_params)
 
     if @property.save
-      render json: @property, status: :created, location: @property
+      render json: @property, status: 200, location: @property
     else
-      render json: @property.errors, status: :unprocessable_entity
+      render json: ErrorSerializer.serialize(@property.errors), status: 400
     end
   end
 
-  # PATCH/PUT /properties/1
+  # PATCH /properties/1
   def update
     if @property.update(property_params)
-      render json: @property
-    else
-      render json: @property.errors, status: :unprocessable_entity
+      render json: @property, status: 200
+    el
+      render json: ErrorSerializer.serialize(@property.errors), status: 400
     end
   end
 
   # DELETE /properties/1
   def destroy
-    @property.destroy
+    if @property.destroy
+      head status: 200
+    end
   end
 
   private
