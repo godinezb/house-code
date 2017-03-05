@@ -19,7 +19,7 @@ class Api::V1::PropertiesController < ApplicationController
     @property = Property.new(property_params)
 
     if @property.save
-      render json: @property, status: 200, location: @property
+      render json: @property, status: 200
     else
       render json: ErrorSerializer.serialize(@property.errors), status: 400
     end
@@ -29,7 +29,7 @@ class Api::V1::PropertiesController < ApplicationController
   def update
     if @property.update(property_params)
       render json: @property, status: 200
-    el
+    else
       render json: ErrorSerializer.serialize(@property.errors), status: 400
     end
   end

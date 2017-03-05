@@ -4,6 +4,8 @@
 2. rails db:setup
 3. rails db:migrate
 4. rails db:seed
+5. rails s
+6. Visit: http://localhost:3000/v1/properties
 
 **Tests**
 Realice pruebas para las validaciones de los datos, para correr dichas pruebas usar el comando:
